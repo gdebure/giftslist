@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table">
+    <tr><th>Name</th><td>{{ gift.name }}</td></tr>
+    <tr><th>Description</th><td>{{ gift.description }}</td></tr>
+    <tr><th>Status</th><td><span class="{% include "status_class.html" %}">{{ gift.get_status_display }}</span></td></tr>
+    <tr><th>Links</th><td>{% for link in gift.get_links %}<a href="{{ link }}">{{ link }}</a><br/>{% endfor %}</td></tr>
+</table>
+
+<div class="btn-group">
+    <button class="btn">Reserve gift</button>
+    <button class="btn btn-success">Set gift as bought</button>
+</div>
+
+{% endblock %}

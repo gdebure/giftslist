@@ -1,0 +1,7 @@
+{% if gift.status == "W" %}
+    label
+{% elif gift.status == "R" %}
+    label label-info
+{% elif gift.status == "O" %}
+    label label-success
+{% endif %}

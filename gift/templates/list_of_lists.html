@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "object_decoration.html" with object_name="Lists" %}
+<table class="table">
+    <thead>
+        <tr>
+        <th>List Name</th>
+        <th>Owner</th>
+        <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for list in list_of_lists %}
+    <tr>
+        <td><a href="{% url detail_list list.id %}">{{ list.name }}</a></td>
+        <td>{{ list.owner }}</td>
+        <td>{{ list.target_date }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,18 @@
+<table class="table table-condensed table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for gift in gift_list %}
+        <tr>
+            <td><a href="{% url detail_gift gift.id %}">{{ gift.name }}</a></td>
+            <td>{{ gift.description }}</td>
+            <td><span class="{% include "status_class.html" %}">{{ gift.get_status_display }}</span></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
