@@ -30,11 +30,14 @@ class Gift(models.Model):
                     
     name = models.CharField(max_length=256)
     description = models.TextField()
-    list = models.ManyToManyField(List)
+    lists = models.ManyToManyField(List)
     status = models.CharField(max_length=1,choices=STATUS_CHOICES)
     
     def __unicode__(self):
         return self.name
+    
+    def get_lists(self):
+        return self.lists.all()
     
     def get_links(self):
         return self.giftlink_set.all()
