@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-<table class="table">
-    <tr><th>Name</th><td>{{ gift.name }}</td></tr>
-    <tr><th>Description</th><td>{{ gift.description }}</td></tr>
-    <tr><th>Status</th><td><span class="{% include "status_class.html" %}">{{ gift.get_status_display }}</span></td></tr>
-    <tr><th>Links</th><td>{% for link in gift.get_links %}<a href="{{ link }}">{{ link }}</a><br/>{% endfor %}</td></tr>
-</table>
+{% include "object_decoration.html" with icon="icon-gift" title=gift.name %}
+
+<p class="lead">{{ gift.description }}</p>
+<p>Status: <span class="{% include "status_class.html" %}">{{ gift.get_status_display }}</span></p>
+
+<p>On lists:</br>
+{% for list in gift.get_lists %}
+<a href="{% url detail_list list.id%}">{{ list.name }}</a><br/>
+{% endfor %}
+</p>
+
+<p>Links:<br/>
+{% for link in gift.get_links %}
+<i class="icon-link"></i> <a href="{{ link }}">{{ link }}</a><br/>
+{% endfor %}
+</p>
+
 
 <div class="btn-group">
     <button class="btn">Reserve gift</button>

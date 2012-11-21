@@ -70,7 +70,8 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(os.path.dirname(__file__), 'static').replace('\\','/'),
-    '/home/guillaume/Developpement/git/CREAM/static/bootstrap',
+    '/home/guillaume/Developpement/bootstrap/',
+    '/home/guillaume/Developpement/FontAwesome/',
 )
 
 # List of finder classes that know how to find static files in
