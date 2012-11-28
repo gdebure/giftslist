@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% include "object_decoration.html" with icon="icon-list" object_name="List" %}
+{% include "object_decoration.html" with icon="icon-list" title=list.name %}
 
 <table class="table">
-    <tr><th>Name</th><td>{{ list.name }}</td></tr>
     <tr><th>Owner</th><td>{{ list.owner }}</td></tr>
     <tr><th>Date</th><td>{{ list.target_date }}</td></tr>
     <tr><th>Comments</th><td>{{ list.comment }}</td></tr>
 </table>
+<a href="{% url edit_list list.id %}"><i class="icon-edit"></i> edit</a>
 <hr/>
 
 {% include "table_decoration.html" with object_name="gifts" %}
