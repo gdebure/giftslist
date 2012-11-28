@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if form.errors %}
+<div class="alert alert-error">Your username and password didn't match. Please try again.</div>
+{% endif %}
+<form method="post" action="{% url login %}">
+{% csrf_token %}
+{{ form }}
+<div class="btn-group">
+    <button class="btn" onClick="history.back()" type="button">Cancel</button>
+    <button class="btn btn-primary" type="submit">Login</button>
+</div>
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+{% endblock %}
