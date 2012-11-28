@@ -1,6 +1,6 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, CreateView, DeleteView
 
 from django.core.urlresolvers import reverse
 
@@ -31,11 +31,21 @@ class EditListView(UpdateView):
 
     model = List
     template_name = "edit_list.html"
-    
-    def get_success_url(self):
-        success_url = reverse("detail_list", kwargs={'pk': self.get_object().id})
-        return success_url
 
+
+class CreateListView(CreateView):
+
+    model = List
+    template_name = "edit_list.html"
+
+
+class DeleteListView(DeleteView):
+
+    model = List
+    template_name = "list_confirm_delete.html"
+
+    def get_success_url(self):
+        return reverse("my_lists")
 
 class DetailGiftView(DetailView,MembersOnlyView):
 

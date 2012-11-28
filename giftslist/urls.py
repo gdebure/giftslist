@@ -7,7 +7,7 @@ admin.autodiscover()
 from django.contrib.auth.views import login, logout_then_login,password_change,password_change_done
 from giftslist.views import HomeView
 from gift.views import ListOfListsView, MyListsView, DetailListView, DetailGiftView
-from gift.views import EditListView
+from gift.views import EditListView, CreateListView, DeleteListView
 
 urlpatterns = patterns('',
     # Examples:
@@ -31,8 +31,10 @@ urlpatterns = patterns('',
     
     url(r'^lists/$', ListOfListsView.as_view(), name="list_of_lists"),
     url(r'^lists/my/$', MyListsView.as_view(), name="my_lists"),
+    url(r'^lists/create/$', CreateListView.as_view(), name="create_list"),
     url(r'^lists/(?P<pk>\d+)$', DetailListView.as_view(), name="detail_list"),
     url(r'^lists/(?P<pk>\d+)/edit/$', EditListView.as_view(), name="edit_list"),
+    url(r'^lists/(?P<pk>\d+)/delete/$', DeleteListView.as_view(), name="delete_list"),
     
     url(r'^gifts/(?P<pk>\d+)$', DetailGiftView.as_view(), name="detail_gift"),
 )
