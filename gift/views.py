@@ -48,9 +48,11 @@ class DeleteListView(DeleteView, MembersOnlyView):
         return reverse("my_lists")
 
 class AddGiftView(CreateView,MembersOnlyView):
-    
+
     model = Gift
     template_name = "edit_gift.html"
+
+
 
 
 
@@ -76,6 +78,15 @@ class AddGiftLinkView(CreateView, MembersOnlyView):
 
     model = GiftLink
     template_name = "edit_link.html"
+    gift = None
+
+    def get_context_data(self,**kwargs):
+        context = super(AddGiftLinkView,self).get_context_data(**kwargs)
+        self.gift = Gift.objects.get(pk=self.kwargs['pk'])
+        context['predefined'] = {'gift': self.gift}
+        return context
+
+
 
 
 
@@ -90,3 +101,6 @@ class DeleteLinkView(DeleteView, MembersOnlyView):
 
     model = GiftLink
     template_name = "link_confirm_delete.html"
+    
+    def get_success_url(self):
+        return self.object.gift.get_absolute_url()

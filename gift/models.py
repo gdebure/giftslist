@@ -47,6 +47,9 @@ class Gift(models.Model):
     def get_links(self):
         return self.giftlink_set.all()
 
+    def get_absolute_url(self):
+        return reverse("detail_gift", kwargs={'pk': self.id})
+
 class GiftLink(models.Model):
 
     gift = models.ForeignKey(Gift)
