@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="alert alert-warning">Do you really want to delete gift "{{ gift }}" ?</div>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="control-group">
+        <div class="controls">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-warning">Delete</button>
+                <button class="btn" onClick="history.back()" type="button"/>Cancel</button>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

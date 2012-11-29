@@ -14,8 +14,13 @@
 
 <p>Links:<br/>
 {% for link in gift.get_links %}
-<i class="icon-link"></i> <a href="{{ link }}">{{ link }}</a><br/>
+<i class="icon-link"></i> 
+<a href="{{ link }}">{{ link }}</a> | 
+<a href="{% url edit_link link.id %}"><i class="icon-edit"></i></a>
+<a href="{% url delete_link link.id %}"><i class="icon-trash"></i></a>
+<br/>
 {% endfor %}
+<a href="{% url add_gift_link gift.id %}"><i class="icon-plus"></i> Add link</a>
 </p>
 
 

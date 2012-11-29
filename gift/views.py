@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 
 from giftslist.views import MembersOnlyView
 
-from gift.models import List, Gift
+from gift.models import List, Gift, GiftLink
 
 
 class ListOfListsView(ListView,MembersOnlyView):
@@ -27,19 +27,19 @@ class DetailListView(DetailView,MembersOnlyView):
     template_name = "detail_list.html"
 
 
-class EditListView(UpdateView):
+class EditListView(UpdateView, MembersOnlyView):
 
     model = List
     template_name = "edit_list.html"
 
 
-class CreateListView(CreateView):
+class CreateListView(CreateView, MembersOnlyView):
 
     model = List
     template_name = "edit_list.html"
 
 
-class DeleteListView(DeleteView):
+class DeleteListView(DeleteView, MembersOnlyView):
 
     model = List
     template_name = "list_confirm_delete.html"
@@ -47,7 +47,46 @@ class DeleteListView(DeleteView):
     def get_success_url(self):
         return reverse("my_lists")
 
+class AddGiftView(CreateView,MembersOnlyView):
+    
+    model = Gift
+    template_name = "edit_gift.html"
+
+
+
 class DetailGiftView(DetailView,MembersOnlyView):
 
     model = Gift
     template_name = "detail_gift.html"
+
+
+class EditGiftView(UpdateView, MembersOnlyView):
+
+    model = Gift
+    template_name = "edit_gift.html"
+
+
+class DeleteGiftView(DeleteView, MembersOnlyView):
+
+    model = Gift
+    template_name = "gift_confirm_delete.html"
+
+
+class AddGiftLinkView(CreateView, MembersOnlyView):
+
+    model = GiftLink
+    template_name = "edit_link.html"
+
+
+
+
+class EditLinkView(UpdateView, MembersOnlyView):
+
+    model = GiftLink
+    template_name = "edit_link.html"
+
+
+class DeleteLinkView(DeleteView, MembersOnlyView):
+
+    model = GiftLink
+    template_name = "link_confirm_delete.html"
