@@ -2,7 +2,7 @@
 
 {% block content %}
 {% include "object_decoration.html" with icon="icon-gift" title=gift.name %}
-<h2 class="muted">{{ gift.list }}</h2>
+<h2 class="muted">On list <a href="{% url detail_list gift.list.id %}">{{ gift.list }}</a></h2>
 
 <p class="lead">{{ gift.description }}</p>
 
@@ -20,7 +20,7 @@ Max: {{ gift.max_price_range }} {{ gift.price_range_unit }}<br/>
 <p>Links:<br/>
 {% for link in gift.get_links %}
 <i class="icon-link"></i> 
-<a href="{{ link }}">{{ link }}</a> | 
+<a href="{{ link }}">{{ link.name }}</a> | 
 <a href="{% url edit_link link.id %}"><i class="icon-edit"></i></a>
 <a href="{% url delete_link link.id %}"><i class="icon-trash"></i></a>
 <br/>

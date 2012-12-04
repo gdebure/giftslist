@@ -56,6 +56,7 @@ class Gift(models.Model):
 class GiftLink(models.Model):
 
     gift = models.ForeignKey(Gift)
+    name = models.CharField(max_length=128)
     url = models.URLField()
 
     def __unicode__(self):
