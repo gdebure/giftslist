@@ -9,5 +9,6 @@
 
 {% include "table_decoration.html" with object_name="gifts" %}
 {% include "gifts_table.html" with gift_list=list.get_gifts %}
+<a href="{% url add_gift list.id %}"><i class="icon-plus"></i> add gift</a>
 
 {% endblock %}

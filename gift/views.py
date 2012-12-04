@@ -51,8 +51,13 @@ class AddGiftView(CreateView,MembersOnlyView):
 
     model = Gift
     template_name = "edit_gift.html"
+    list = None
 
-
+    def get_context_data(self,**kwargs):
+        context = super(CreateView,self).get_context_data(**kwargs)
+        self.list = List.objects.get(pk=self.kwargs['pk'])
+        context['predefined'] = {'list': self.list}
+        return context
 
 
 
@@ -81,7 +86,7 @@ class AddGiftLinkView(CreateView, MembersOnlyView):
     gift = None
 
     def get_context_data(self,**kwargs):
-        context = super(AddGiftLinkView,self).get_context_data(**kwargs)
+        context = super(CreateView,self).get_context_data(**kwargs)
         self.gift = Gift.objects.get(pk=self.kwargs['pk'])
         context['predefined'] = {'gift': self.gift}
         return context
