@@ -91,7 +91,8 @@ class AddGiftLinkView(CreateView, MembersOnlyView):
         context['predefined'] = {'gift': self.gift}
         return context
 
-
+    def get_success_url(self):
+        return self.object.gift.get_absolute_url()
 
 
 
