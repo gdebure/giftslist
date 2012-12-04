@@ -101,6 +101,9 @@ class EditLinkView(UpdateView, MembersOnlyView):
 
     model = GiftLink
     template_name = "edit_link.html"
+    
+    def get_success_url(self):
+        return self.object.gift.get_absolute_url()
 
 
 class DeleteLinkView(DeleteView, MembersOnlyView):
