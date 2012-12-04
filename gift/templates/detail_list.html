@@ -2,8 +2,12 @@
 
 {% block content %}
 {% include "object_decoration.html" with icon="icon-list" title=list.name %}
+<h2 class="muted">{{ list.comment }}</h2>
+<p><a href="" class="btn btn-primary">Share List</a></p>
 
-{% include "list_table.html" %}
+<p>A list by {{ list.owner }}</p>
+<p>Occasion date : {{ list.target_date }}</p>
+
 <a href="{% url edit_list list.id %}"><i class="icon-edit"></i> edit</a> | <a href="{% url delete_list list.id %}"><i class="icon-trash"></i> delete</a>
 <hr/>
 
