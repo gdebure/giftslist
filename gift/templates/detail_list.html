@@ -11,7 +11,7 @@
 <a href="{% url edit_list list.id %}"><i class="icon-edit"></i> edit</a> | <a href="{% url delete_list list.id %}"><i class="icon-trash"></i> delete</a>
 <hr/>
 
-{% include "table_decoration.html" with object_name="gifts" %}
+{% include "table_decoration.html" with icon="icon-gift" title="Gifts" %}
 {% include "gifts_table.html" with gift_list=list.get_gifts %}
 <a href="{% url add_gift list.id %}"><i class="icon-plus"></i> add gift</a>
 
