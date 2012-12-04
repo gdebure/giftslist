@@ -35,8 +35,11 @@ class Gift(models.Model):
 
     name = models.CharField(max_length=256)
     description = models.TextField()
-    lists = models.ManyToManyField(List)
+    list = models.ForeignKey(List)
     status = models.CharField(max_length=1,choices=STATUS_CHOICES)
+    min_price_range = models.FloatField(null=True,blank=True)
+    max_price_range = models.FloatField(null=True,blank=True)
+    price_range_unit = models.CharField(max_length=8,null=True,blank=True)
 
     def __unicode__(self):
         return self.name

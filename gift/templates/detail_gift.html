@@ -2,14 +2,19 @@
 
 {% block content %}
 {% include "object_decoration.html" with icon="icon-gift" title=gift.name %}
+<h2 class="muted">{{ gift.list }}</h2>
 
 <p class="lead">{{ gift.description }}</p>
+
 <p>Status: <span class="{% include "status_class.html" %}">{{ gift.get_status_display }}</span></p>
 
-<p>On lists:</br>
-{% for list in gift.get_lists %}
-<a href="{% url detail_list list.id%}">{{ list.name }}</a><br/>
-{% endfor %}
+<p>Price Range:<br/>
+{% if gift.min_price_range %}
+Min: {{ gift.min_price_range }} {{ gift.price_range_unit }}<br/>
+{% endif %}
+{% if gift.min_price_range %}
+Max: {{ gift.max_price_range }} {{ gift.price_range_unit }}<br/>
+{% endif %}
 </p>
 
 <p>Links:<br/>
